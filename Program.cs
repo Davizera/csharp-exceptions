@@ -12,30 +12,34 @@ namespace ByteBank
         {
             try
             {
-                ContaCorrente conta = new ContaCorrente(4654, 4568798);
-                ContaCorrente conta2 = new ContaCorrente(465454, 456845);
-                Console.WriteLine("Contas criadas com sucesso");
-                conta.Transferir(1000, conta2);
-                //Console.WriteLine("Transferência feita com sucesso!");
-                //conta.Sacar(1000);
-            }
-            catch (SaldoInsuficienteExcepetion ex)
-            {
-                Console.WriteLine(ex.Saldo);
-                Console.WriteLine(ex.ValorSaque);
-                Console.WriteLine(ex.StackTrace);
+                ContaCorrente conta = new ContaCorrente(123, 456789);
+                ContaCorrente conta2 = new ContaCorrente(123, 987654);
 
-                Console.WriteLine(ex.Message);
+                conta.Sacar(10000);
+
             }
-            catch (ArgumentException ex)
+            //catch(ArgumentException)
+            //{
+
+            //}
+            //catch (SaldoInsuficienteExcepetion)
+            //{
+
+            //}
+            catch (OperacaoFinanceiraException e)
             {
-                Console.WriteLine(ex.ParamName);
-                Console.WriteLine(ex.Message);
+                Console.Write(e.Message);
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.Write(e.StackTrace);
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.Write("Informações da innerException: ");
+                Console.WriteLine(e.InnerException);
+
             }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
+            Console.WriteLine("Aperte enter para sair da aplicação . . .");
             Console.ReadLine();
         }
     }
